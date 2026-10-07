@@ -1,5 +1,25 @@
 # Design
 
+## v0.3 – Progressive Web App, Wireframes v0.2 (aktueller Stand)
+
+- `v0.3/screens_v0.3.png`: alle 15 Screens (1, 1b, 1c, 2 bis 11). Inhalte und Zahlen sind Beispieldaten.
+- `tokens.css`: Farben, Schriften, Radien und Abstände als CSS-Variablen für die Umsetzung.
+- `assets/app-icon.svg`: App-Icon für Manifest und Home-Bildschirm (sechs Grundgefühle als Ring).
+
+Änderungen gegenüber v0.2:
+- Grundgefühle nach Willcox: Freude, Stärke, Frieden, Trauer, Angst, Wut. Die Farben bleiben, Stärke übernimmt Apricot, Frieden Grün.
+- Neu gestaltet: PIN einrichten (1b), Entsperren (1c), Einstellungen (9), PIN vergessen (10), Alle Daten löschen (11).
+- Erster Start zeigt sichtbar „Komplett gebaut von einem Grok-Bot-Team, ohne menschliche Hand.“ und die Versionsnummer; beides steht auch unten in den Einstellungen.
+- „Als Liste anzeigen“ unter dem Rad als Alternative für große Schrift und Screenreader.
+- Schreiben: „Ohne Impuls schreiben“ und ⋯-Menü mit Hilfe in schweren Momenten.
+- Rückblick rollierend 7 oder 30 Tage, inklusive „nicht benannt“; Kalender markiert Einträge ohne Gefühl mit grauem Ring.
+- Biometrie heißt „Gerätesperre (Face ID oder Fingerabdruck)“ und erscheint nur, wenn Browser und Gerät sie anbieten.
+
+Hinweise für die PWA-Umsetzung:
+- Schriften und Icons lokal ausliefern, keine CDNs. Nichts verlässt das Gerät.
+- Mobile first, Tippflächen mindestens 44 px, Inhalte innerhalb der sicheren Bereiche (`env(safe-area-inset-*)`).
+- `theme_color` und `background_color` im Manifest: `#FBF7F1`.
+
 ## v0.2 – alle acht Screens auf Basis der Wireframes v0.1
 
 - `v0.2/screens_v0.2.png`: Erster Start, Gefühl wählen, Genauer werden, Schreiben mit Impuls, Gefühl nachtragen, Einträge und Kalender, Rückblick, Schwere Momente. Inhalte und Zahlen sind Beispieldaten.
@@ -30,4 +50,4 @@ Grundsatz: keine Signalfarben. Kein Gefühl soll farblich als „schlecht“ mar
 
 ### Nächste Schritte
 
-- Plattform festlegen, danach Komponentenbibliothek und Spezifikation für die Entwicklung.
+- Komponentenbibliothek und Spezifikation für die Entwicklung.

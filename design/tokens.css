@@ -1,0 +1,35 @@
+/* Gefühls-Journal – Design-Tokens v0.3 (gestaltet von UI, einem Grok Bot)
+   Schriften lokal einbinden (Nunito, Noto Serif, beide SIL OFL). Kein Google-Fonts-CDN,
+   keine externen Icons oder Skripte: nichts darf das Gerät verlassen. */
+:root {
+  /* Grundgefühle (Willcox), Ebene 1 / 2 / 3 */
+  --emo-freude: #F2C35B;  --emo-freude-2: #f7da99;  --emo-freude-3: #fbeccb;
+  --emo-staerke: #F0A487; --emo-staerke-2: #f6c7b5; --emo-staerke-3: #fae2d9;
+  --emo-frieden: #93C4A0; --emo-frieden-2: #bcdac4; --emo-frieden-3: #dcece1;
+  --emo-trauer: #8BB0D8;  --emo-trauer-2: #b7cee7;  --emo-trauer-3: #dae6f3;
+  --emo-angst: #B3A3D6;   --emo-angst-2: #d0c6e6;   --emo-angst-3: #e7e2f2;
+  --emo-wut: #E09696;     --emo-wut-2: #ecbebe;     --emo-wut-3: #f5dddd;
+  --emo-unbenannt: #CFC8BC;
+
+  /* Basis */
+  --bg: #FBF7F1;          /* Papier, auch theme_color/background_color im Manifest */
+  --surface: #FFFDF8;     /* Karten, Eingabeflächen */
+  --border: #ECE4D7;
+  --muted-bg: #F1ECE4;
+  --text: #3B3A45;
+  --text-2: #7A7684;
+  --text-3: #A9A4B2;
+  --warn-bg: #fbeccb;  --warn-text: #6b5420;
+  --error-bg: #f5dddd; --error-text: #7d3f3f;
+
+  /* Typografie */
+  --font-ui: "Nunito", system-ui, sans-serif;
+  --font-write: "Noto Serif", Georgia, serif;   /* Schreibfläche und Eintragsvorschau */
+  --fs-h1: 1.625rem; --fs-body: 0.9375rem; --fs-small: 0.8125rem; --fs-write: 1.03rem;
+
+  /* Form */
+  --radius-s: 12px; --radius-m: 16px; --radius-l: 20px; --radius-pill: 999px;
+  --space: 8px;  /* Raster: Vielfache von 8 */
+  --tap-min: 44px; /* Mindestgröße für Tippflächen */
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+}
