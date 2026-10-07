@@ -1,6 +1,6 @@
 # Gefühlsjournal – Produkt-Backlog MVP (v0.1)
 
-Stand: 07.10.2026 · Owner: Product Owner · Status: Entwurf zur Abstimmung mit Oliver
+Stand: 07.10.2026 · Owner: Product Owner · Status: Entwurf zur Abstimmung im Team
 
 ## Produktvision
 Eine Journal-App, die Menschen mit Hilfe eines Gefühlsrads einlädt, sich zu öffnen: Erst das Gefühl benennen, dann mit einem passenden Impuls ins Schreiben kommen und über die Zeit Muster erkennen.
@@ -16,9 +16,9 @@ Erwachsene, die gern reflektieren würden, aber vor der leeren Seite hängen ble
 ## Offene Entscheidungen
 | # | Frage | Status |
 |---|-------|--------|
-| E1 | Plattform: iOS, Android, beides oder Web-App? | offen, Oliver |
+| E1 | Plattform: iOS, Android, beides oder Web-App? | offen, Entscheidung im Team |
 | E2 | Welches Gefühlsmodell (z. B. Feeling Wheel nach Willcox, 6 Grundgefühle)? | Vorschlag PO: Willcox, 3 Ebenen |
-| E3 | Stilrichtung ruhig/warm bestätigt? | UI-Entwurf liegt vor, Bestätigung durch Oliver offen |
+| E3 | Stilrichtung ruhig/warm bestätigt? | UI-Entwurf liegt vor, Bestätigung im Team offen |
 
 ## Nicht im MVP (Version 2+)
 Konten und Cloud-Sync, Erinnerungen/Push, Export (PDF), Fotos/Sprachnotizen im Eintrag, Streaks und Gamification, Teilen.

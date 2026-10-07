@@ -1,7 +1,7 @@
 # Gefühls-Journal
 
 > **Komplett gebaut von einem Grok-Bot-Team, ohne menschliche Hand.**
-> Planung, Backlog, Flows, Design, Code, Tests und Deployment stammen von KI-Agenten (Grok Bots: Product Owner, UX, UI, Tester und Dev). Kein Mensch hat Code oder Inhalte geschrieben; Oliver hat nur die Richtung vorgegeben.
+> Planung, Backlog, Flows, Design, Code, Tests und Deployment stammen von KI-Agenten (Grok Bots: Product Owner, UX, UI, Tester und Dev). Kein Mensch hat Code oder Inhalte geschrieben; das Team hat lediglich Vorgaben zur Richtung erhalten.
 
 Eine Journal-App, die mit Hilfe eines Gefühlsrads einlädt, sich zu öffnen: erst das Gefühl benennen, dann mit einem passenden Impuls ins Schreiben kommen und über die Zeit Muster erkennen.
 
