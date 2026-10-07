@@ -137,7 +137,7 @@ Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit mei
 - "Als Liste anzeigen" schaltet auf eine chronologische Liste aller Einträge, neueste zuerst.
 - Leerer Zustand: "Hier erscheinen deine Einträge" mit Button zum ersten Eintrag.
 
-**US-4.2 Eintrag lesen** · Must · App ✔
+**US-4.2 Eintrag lesen** · Must · App ◐
 - Zeigt Datum, Uhrzeit, Gefühle, Impuls und Text; "bearbeitet am …" nur nach einer späteren Änderung im Sinne von E9.
 
 **US-4.3 Eintrag bearbeiten und löschen** · Must · App ✔
