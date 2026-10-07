@@ -1,5 +1,7 @@
 # Gefühlsjournal – Produkt-Backlog MVP (v0.1)
 
+> Abgelöst durch [Backlog MVP v0.2](Backlog_MVP_v0.2.md).
+
 Stand: 07.10.2026 · Owner: Product Owner · Status: Entwurf zur Abstimmung im Team
 
 ## Produktvision
