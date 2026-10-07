@@ -34,21 +34,21 @@ Erwachsene, die gern reflektieren würden, aber vor der leeren Seite hängen ble
 | E6 | Biometrie | Nicht in v1, weil Face ID und Fingerabdruck im Browser nicht verlässlich nutzbar sind. Nur PIN. |
 | E7 | Rückblick-Zeiträume (W1) | Rollierend: heute plus die 6 bzw. 29 Tage davor, nach lokaler Gerätezeit. |
 | E8 | Hinweise im Rückblick (W2) | Nur aus gewählten Gefühlen und Datum berechnet, nie aus dem Text. |
-| E9 | Eintrag für vergangene Tage | Nicht in v1. Ein Eintrag zählt für den Tag, an dem er zuerst gespeichert wurde (lokale Zeit). |
+| E9 | Datum eines Eintrags, Einträge für vergangene Tage | Datum und Uhrzeit eines Eintrags sind der Beginn des Schreibens (lokale Zeit), auch wenn erst nach Mitternacht gespeichert wird. "Bearbeitet" erscheint nur, wenn ein gespeicherter Eintrag später erneut geöffnet und geändert wird, nie in der ersten Schreibsitzung. Einträge für vergangene Tage gibt es in v1 nicht. |
 | E10 | Land der Krisennummern | v1 nur Deutschland; der Screen sagt das ausdrücklich. |
 
 ## Nicht in v1
 Konten und Cloud-Sync, Biometrie, Erinnerungen und Push, PDF-Export, Fotos und Sprachnotizen, Streaks, Teilen, Einträge für vergangene Tage, Krisennummern für andere Länder.
 
-Spalte "App": Stand laut Dev in v0.1.0. ✔ umgesetzt, ◐ bekannte Lücke aus den Reviews, ○ offen. Wo v0.2 Kriterien präzisiert (z. B. genaue Wartezeiten), muss der Tester gegen die neuen Kriterien abnehmen.
+Spalte "App": Stand laut Dev in v0.1.0, korrigiert nach dem [Testbericht](../review/Testbericht_App_v0.1.0.md) (T7). ✔ umgesetzt, ◐ bekannte Lücke aus den Reviews, ○ offen. Wo v0.2 Kriterien präzisiert (z. B. genaue Wartezeiten), muss der Tester gegen die neuen Kriterien abnehmen.
 
 ---
 
 ## Epic 1: Onboarding & Datenschutz
 
-**US-1.1 PIN einrichten** · Must · App ✔
+**US-1.1 PIN einrichten** · Must · App ◐
 Als neue Nutzerin möchte ich eine PIN einrichten, damit niemand außer mir meine Einträge lesen kann.
-- PIN aus 4 bis 6 Ziffern, zweimal einzugeben; bei Abweichung Hinweis und erneute Eingabe.
+- PIN aus 4 bis 6 Ziffern, zweimal einzugeben; bei Abweichung Hinweis und erneute Eingabe. Vorgeschlagen werden 6 Ziffern, 4 sind erlaubt (Testbericht T8).
 - Vor dem Speichern erscheint die Pflicht-Warnung "Wenn du deine PIN vergisst, können deine Einträge nicht wiederhergestellt werden" und muss bestätigt werden.
 - Einrichtung ist überspringbar und in den Einstellungen nachholbar.
 - Ist eine PIN gesetzt, wird sie beim Öffnen und nach mehr als 60 Sekunden im Hintergrund verlangt (fester Wert, auch bei gesperrtem Bildschirm).
@@ -57,19 +57,20 @@ Als neue Nutzerin möchte ich eine PIN einrichten, damit niemand außer mir mein
 **US-1.2 Datenschutz-Hinweis** · Must · App ✔
 - Erster Screen enthält den Satz "Alles, was du schreibst, bleibt nur auf deinem Gerät."
 - Die ausführliche Datenschutzerklärung ist in der App enthalten und offline lesbar.
+- Sie sagt ehrlich: "Ohne PIN kann jede Person mit Zugriff auf dein entsperrtes Gerät die Einträge lesen." (Testbericht T8)
 
 **US-1.3 Lokale, verschlüsselte Speicherung** · Must · App ✔
 - Einträge und Entwürfe liegen nur in IndexedDB, jeweils mit AES-256-GCM verschlüsselt.
 - Mit PIN ist der Schlüssel per PBKDF2 an die PIN gebunden.
 - Abnahme: In den Netzwerk-Werkzeugen des Browsers gibt es während einer kompletten Nutzung keine Anfrage außer an die eigene GitHub-Pages-Adresse.
 
-**US-1.4 PIN vergessen** · Must · App ✔ · neu
+**US-1.4 PIN vergessen** · Must · App ◐ · neu
 Als Nutzerin, die ihre PIN vergessen hat, möchte ich verstehen, was ich tun kann.
 - Auf dem Entsperren-Screen gibt es "PIN vergessen?".
 - Der Screen erklärt: Ohne PIN sind die Einträge nicht lesbar. Wege: erneut versuchen, eine Sicherungsdatei einspielen (US-6.4) oder das Journal zurücksetzen.
 - Zurücksetzen nur nach Eintippen von LÖSCHEN; danach Zustand wie beim ersten Start.
 
-**US-1.5 Falsche PIN** · Must · App ✔ · neu
+**US-1.5 Falsche PIN** · Must · App ◐ · neu
 - Nach jeder falschen Eingabe Hinweis mit Zahl der verbleibenden Versuche bis zur Wartezeit.
 - Nach 5 Fehlversuchen 30 Sekunden Wartezeit, danach bei jedem weiteren Fehlversuch doppelt so lang, maximal 15 Minuten.
 - Die Wartezeit bleibt auch nach Neuladen der App bestehen.
@@ -112,17 +113,17 @@ Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit mei
 - "Anderer Impuls" zeigt einen anderen Impuls derselben Liste, nie zweimal hintereinander denselben.
 - "Ohne Impuls schreiben" blendet den Impuls für diesen Eintrag aus.
 
-**US-3.2 Freies Schreiben** · Must · App ✔
+**US-3.2 Freies Schreiben** · Must · App ◐
 - Schreibfläche in Noto Serif, mindestens 16 Pixel Schriftgröße, keine Formatierungsleiste, kein Zeichenlimit.
 - Entwurf wird spätestens 5 Sekunden nach der letzten Eingabe und sofort beim Wechsel in den Hintergrund verschlüsselt gespeichert.
 - Nach einem Absturz oder Schließen wird der Entwurf beim nächsten Öffnen angeboten ("Weiterschreiben" oder "Verwerfen").
 - Die Bildschirmtastatur verdeckt weder die Schreibfläche noch den Fertig-Button (auf echtem iPhone zu prüfen).
 
-**US-3.3 Eintrag speichern** · Must · App ✔
+**US-3.3 Eintrag speichern** · Must · App ◐
 - "Fertig" ist bei leerem Text deaktiviert.
 - Schließen (X) mit Text fragt "Entwurf behalten" oder "Verwerfen".
 - Nach dem Speichern erscheint auf beiden Wegen für 3 Sekunden der Text `SAVE_THANKS` aus `docs/js/data.js`.
-- Gespeichert werden Text, Gefühle (falls gewählt), Impuls (falls gezeigt), Erstell-Zeitpunkt.
+- Gespeichert werden Text, Gefühle (falls gewählt), Impuls (falls gezeigt) und als Erstell-Zeitpunkt der Beginn des Schreibens (E9).
 
 **US-3.4 Gefühl nachtragen** · Must · App ✔
 - Nach dem Speichern ohne Gefühl erscheint das Rad als optionaler Schritt mit "Überspringen".
@@ -130,14 +131,14 @@ Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit mei
 
 ## Epic 4: Einträge
 
-**US-4.1 Kalender und Liste** · Must · App ✔
+**US-4.1 Kalender und Liste** · Must · App ◐
 - Monatskalender; ein Tag mit Einträgen zeigt einen Punkt in der Farbe des ersten Gefühls des ersten Eintrags dieses Tages, ohne Gefühl einen grauen Ring.
 - Tippen auf einen Tag zeigt dessen Einträge als Liste unter dem Kalender, auch wenn es nur einer ist.
 - "Als Liste anzeigen" schaltet auf eine chronologische Liste aller Einträge, neueste zuerst.
 - Leerer Zustand: "Hier erscheinen deine Einträge" mit Button zum ersten Eintrag.
 
 **US-4.2 Eintrag lesen** · Must · App ✔
-- Zeigt Datum, Uhrzeit, Gefühle, Impuls und Text; bei bearbeiteten Einträgen zusätzlich "bearbeitet am …".
+- Zeigt Datum, Uhrzeit, Gefühle, Impuls und Text; "bearbeitet am …" nur nach einer späteren Änderung im Sinne von E9.
 
 **US-4.3 Eintrag bearbeiten und löschen** · Must · App ✔
 - Text und Gefühle sind bearbeitbar, Impuls und Erstell-Zeitpunkt nicht.
@@ -156,7 +157,7 @@ Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit mei
 - Bei weniger als 3 Einträgen im gewählten Zeitraum erscheint statt der Balken ein Hinweis.
 - Hinweise auf Muster nur nach E8, ohne Bewertung.
 
-**US-5.2 Vom Muster zum Eintrag** · Should · App ✔
+**US-5.2 Vom Muster zum Eintrag** · Should · App ◐
 - Tippen auf ein Grundgefühl öffnet die gefilterte Eintragsliste für den Zeitraum.
 
 ## Epic 6: Einstellungen & Sicherheit
@@ -176,7 +177,7 @@ Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit mei
 - Löscht Einträge, Entwürfe, PIN, Einstellungen und Sicherungsschlüssel; danach Zustand wie beim ersten Start.
 - Wird der Vorgang unterbrochen, ist beim nächsten Öffnen entweder alles gelöscht oder nichts.
 
-**US-6.4 Sicherung als Datei und Wiederherstellung** · Must · App ✔ · neu
+**US-6.4 Sicherung als Datei und Wiederherstellung** · Must · App ◐ · neu
 Als Nutzerin möchte ich mein Journal als Datei sichern, damit ich es bei Gerätewechsel oder Datenverlust zurückholen kann, ohne dass es auf einen Server muss.
 - "Journal sichern" erzeugt eine Datei, die mit einem selbst gewählten Passwort verschlüsselt ist, und bietet sie über den Teilen- bzw. Download-Dialog des Geräts an.
 - "Sicherung einspielen" fragt nach dem Passwort, zeigt die Zahl der Einträge und fragt, ob ersetzt oder ergänzt werden soll.
