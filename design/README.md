@@ -1,5 +1,12 @@
 # Design
 
+## v0.2 – alle acht Screens auf Basis der Wireframes v0.1
+
+- `v0.2/screens_v0.2.png`: Erster Start, Gefühl wählen, Genauer werden, Schreiben mit Impuls, Gefühl nachtragen, Einträge und Kalender, Rückblick, Schwere Momente. Inhalte und Zahlen sind Beispieldaten.
+- `v0.2/quellen/`: HTML-Quelle und Generator-Skript (`python3 generate.py`).
+- Rad auf Ebene 1 zum Tippen; Ebene 2 und 3 als Chips in den Abstufungen der Grundfarbe.
+- Schreibfläche und Eintragsvorschau in Noto Serif, damit sich Schreiben wie ein Tagebuch anfühlt; UI-Texte in Nunito.
+
 ## v0.1 – erster Entwurf (Stilrichtung: ruhig und warm)
 
 - `v0.1/gefuehlsrad-farbsystem.png`: Gefühlsrad mit drei Ebenen (6 Grundgefühle, 12 Gefühle, 24 Feinabstufungen) und Farbpalette.
@@ -23,5 +30,4 @@ Grundsatz: keine Signalfarben. Kein Gefühl soll farblich als „schlecht“ mar
 
 ### Nächste Schritte
 
-- Screens auf die Wireframes v0.1 aus `flows/` übertragen, inkl. „Gefühl nachtragen“.
 - Plattform festlegen, danach Komponentenbibliothek und Spezifikation für die Entwicklung.
