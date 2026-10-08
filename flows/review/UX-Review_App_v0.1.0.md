@@ -25,5 +25,5 @@ Live im iPhone-Format geprüft.
 | UX3 | Erledigt | Zwei große Anruf-Buttons (68 px) plus Notruf 112. |
 | UX4 | Erledigt | „Tippen“ in der Radmitte entfernt. |
 | UX5 | Erledigt | Hinweis kommt im Browser vor der PIN, mit „Hab ich gemacht“ und „Später“; in der installierten App nicht. |
-| UX6 | Bewusst so belassen | Nach „Fertig“ geht es zu „Einträge“. |
+| UX6 | Unverändert | Nach „Fertig“ geht es weiter zu „Einträge“. Kein Blocker, Entscheidung beim Product Owner. |
 | UX7 | Erledigt | `-webkit-touch-callout: none` auf Buttons, Ziffernblock und Chips; Text in der Schreibfläche bleibt markierbar. |
