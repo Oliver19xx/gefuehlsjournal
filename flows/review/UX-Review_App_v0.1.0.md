@@ -13,3 +13,17 @@ Was gut funktioniert: Onboarding, PIN-Einrichtung mit automatischem Weiter bei d
 | UX5 | Niedrig | Home-Bildschirm-Hinweis | Es gibt nur „Später“, kein „Erledigt“. Wer die App gerade installiert hat, muss „Später“ drücken. | Zweiten Button „Hab ich gemacht“; in der installierten App (Standalone-Modus) den Hinweis gar nicht zeigen. |
 | UX6 | Niedrig | Nach dem Speichern | Nach „Fertig“ springt die App in „Einträge“ statt zurück zu „Heute“. Das ist okay, sollte aber bewusst entschieden und im Backlog festgehalten sein. | Entscheidung PO. |
 | UX7 | Niedrig | Native-Gefühl | Ergänzend zu UIs Punkten (Doppeltipp-Zoom, 16-px-Felder): langes Drücken auf Buttons öffnet in Safari ein Kontextmenü. | `-webkit-touch-callout: none` auf Buttons und Ziffernblock. |
+
+## Nachprüfung in v0.1.2 (8. Oktober 2026)
+
+Live im iPhone-Format geprüft.
+
+| Nr. | Status | Befund |
+|---|---|---|
+| UX1 | Erledigt | Button heißt jetzt „Weiter mit enttäuscht“, dazu „+ Gefühl aus einem anderen Bereich“. |
+| UX2 | Offen bis Gerätetest | Code passt sich per `visualViewport` und `interactive-widget=resizes-content` an die Tastatur an. Prüfung steht in Schritt 5 der Gerätetest-Checkliste. |
+| UX3 | Erledigt | Zwei große Anruf-Buttons (68 px) plus Notruf 112. |
+| UX4 | Erledigt | „Tippen“ in der Radmitte entfernt. |
+| UX5 | Erledigt | Hinweis kommt im Browser vor der PIN, mit „Hab ich gemacht“ und „Später“; in der installierten App nicht. |
+| UX6 | Bewusst so belassen | Nach „Fertig“ geht es zu „Einträge“. |
+| UX7 | Erledigt | `-webkit-touch-callout: none` auf Buttons, Ziffernblock und Chips; Text in der Schreibfläche bleibt markierbar. |
