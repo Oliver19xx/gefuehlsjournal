@@ -32,16 +32,29 @@ Fertig, wenn veröffentlicht, Changelog ergänzt und Dev im Team-Chat meldet, we
 - Product Owner setzt danach den Status im Backlog.
 - Findet der Tester neue Fehler mit hoher oder mittlerer Priorität, folgt 0.1.2 nach demselben Muster.
 
-### Phase 3 · Gerätetest · Oliver (15 bis 20 Minuten)
+### Phase 3 · Gerätetest · Oliver (etwa 20 Minuten, mit Android etwa 25)
 Das Team hat keine echten Geräte. Der Gerätetest ist der einzige Schritt, bei dem ein Mensch die App bedient; gebaut und geändert wird weiterhin nur vom Team. Checkliste (Tester ergänzt sie bei Bedarf):
+**A · iPhone, Safari im Browser (ca. 5 Minuten)**
 1. Seite in Safari öffnen, "Los geht's", PIN mit 6 Ziffern einrichten. Die Seite lädt dabei nicht neu.
-2. Bei der PIN schnell mehrmals dieselbe Ziffer tippen: Es wird nicht gezoomt, nichts wird markiert, kein Menü erscheint.
-3. Zum Home-Bildschirm hinzufügen, von dort öffnen: Vollbild ohne Browserleiste, App-Icon passt.
-4. Einen Eintrag über das Rad mit zwei Gefühlen aus verschiedenen Grundgefühlen schreiben. Beim Schreiben verdeckt die Tastatur weder Text noch "Fertig".
-5. Einen Eintrag direkt schreiben und ein Gefühl nachtragen.
-6. In den Einstellungen "Journal sichern": Der Teilen-Dialog erscheint, die Datei lässt sich in "Dateien" speichern.
-7. "Hilfe in schweren Momenten": Ein Tipp auf eine Nummer öffnet den Anruf-Dialog.
-8. Dasselbe in Kurzform auf einem Android-Handy mit Chrome, falls vorhanden.
+2. Bei der PIN schnell mehrmals dieselbe Ziffer tippen: Es wird nicht gezoomt, nichts wird markiert, kein Menü erscheint. Einen Button lange drücken: kein Kontextmenü.
+3. Einen kurzen Eintrag direkt schreiben und speichern.
+
+**B · iPhone, installiert (ca. 12 Minuten)**
+4. Zum Home-Bildschirm hinzufügen, von dort öffnen: Vollbild ohne Browserleiste, App-Icon passt. Bitte melden: Fragt die installierte App nach der PIN aus Schritt 1 und zeigt den Eintrag aus Schritt 3, oder beginnt sie neu mit "Los geht's"? (Auf dem iPhone haben installierte Web-Apps in der Regel einen eigenen Speicher, getrennt von Safari. Dann müsste der Hinweis zum Installieren davor warnen, vorher in Safari zu schreiben.)
+5. Einen Eintrag über das Rad mit zwei Gefühlen aus verschiedenen Grundgefühlen schreiben. Beim Schreiben verdeckt die Tastatur weder Text noch "Fertig". In der Schreibfläche lässt sich Text weiterhin lange drücken, markieren und kopieren.
+6. Einen Eintrag direkt schreiben und ein Gefühl nachtragen.
+7. Mit zwei Fingern in einen Screen hineinzoomen: Das muss weiterhin gehen (Barrierefreiheit).
+8. In eine andere App wechseln: Im App-Umschalter ist kein Eintragstext zu sehen. Mehr als 1 Minute warten und zurückkehren: Die PIN wird verlangt.
+9. In den Einstellungen "Journal sichern": Das Passwortfeld zoomt beim Antippen nicht hinein. Der Teilen-Dialog erscheint, die Datei lässt sich in "Dateien" speichern.
+10. "Sicherung wiederherstellen" mit genau dieser Datei aus "Dateien": Die Datei lässt sich auswählen, die App zeigt die Zahl der Einträge und fragt nach Ersetzen oder Ergänzen.
+11. "Hilfe in schweren Momenten": Ein Tipp auf eine Nummer öffnet den Anruf-Dialog (abbrechen genügt).
+
+**C · Android mit Chrome, falls vorhanden (ca. 5 Minuten)**
+12. Schritte 1, 2, 4, 5 und 9 in Kurzform; bei Schritt 4 erscheint statt der iPhone-Anleitung der Button "Jetzt installieren".
+
+**D · Nach dem Release 1.0.0 (1 Minute, gehört zu Phase 4)**
+13. Die installierte App öffnen, einen Entwurf anfangen: Der Hinweis "Eine neue Version ist da" erscheint, nach "Aktualisieren" zeigt die App 1.0.0, und der Entwurf ist noch da.
+
 Ergebnis: kurze Rückmeldung im Team-Chat, gern mit Screenshot bei Problemen.
 
 ### Phase 4 · Release 1.0.0 · Dev, Tester, Product Owner
