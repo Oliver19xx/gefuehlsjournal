@@ -24,6 +24,8 @@ export async function open() {
     if (!d.objectStoreNames.contains("entries")) d.createObjectStore("entries", { keyPath: "id" });
   };
   db = await req(r);
+  // Wird die Datenbank woanders gelöscht oder aktualisiert (z. B. zweiter Tab), Verbindung freigeben.
+  db.onversionchange = () => { db.close(); db = null; };
   if (navigator.storage && navigator.storage.persist) { try { await navigator.storage.persist(); } catch (_) {} }
 }
 
@@ -49,7 +51,7 @@ async function newDataKey() {
 
 /** Ersteinrichtung ohne PIN. Daten sind trotzdem verschlüsselt abgelegt. */
 export async function setupWithoutPin() {
-  dataKey = await newDataKey();
+  if (!dataKey) dataKey = await newDataKey(); // bestehenden Schlüssel behalten (z. B. nach Wiederherstellung)
   await setMeta("lock", { mode: "none", key: dataKey });
 }
 /** Ersteinrichtung mit PIN oder PIN nachträglich setzen/ändern (Journal muss entsperrt sein). */
@@ -134,7 +136,13 @@ export async function wipe() {
 }
 
 // ---------- Sicherung als Datei (verschlüsselt mit eigenem Passwort) ----------
-const b64 = (u8) => btoa(String.fromCharCode(...new Uint8Array(u8)));
+// In Blöcken kodieren: Ein Spread über alle Bytes sprengt bei großen Journalen den Aufrufstapel.
+function b64(buf) {
+  const u8 = new Uint8Array(buf), CHUNK = 0x8000;
+  let bin = "";
+  for (let i = 0; i < u8.length; i += CHUNK) bin += String.fromCharCode.apply(null, u8.subarray(i, i + CHUNK));
+  return btoa(bin);
+}
 const unb64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
 
 async function passKey(pass, salt) {
@@ -150,8 +158,16 @@ export async function exportBackup(pass) {
   return JSON.stringify({ app: "gefuehlsjournal", format: 1, kdf: "PBKDF2-SHA256", iterations: PBKDF2_ITERATIONS,
     salt: b64(salt), iv: b64(iv), data: b64(ct) });
 }
-/** Gibt die Zahl neu hinzugefügter Einträge zurück. Wirft "bad-file" oder "bad-pass". */
-export async function importBackup(text, pass) {
+/** Prüft einen importierten Eintrag; unbekannte Gefühle werden verworfen statt die App abstürzen zu lassen. */
+let knownCores = null;
+export function setKnownCores(ids) { knownCores = new Set(ids); }
+function clean(e) {
+  if (!e || typeof e.id !== "string" || typeof e.text !== "string" || !Number.isFinite(e.createdAt)) return null;
+  const feelings = Array.isArray(e.feelings) ? e.feelings.filter((f) => f && (!knownCores || knownCores.has(f.core))) : [];
+  return { ...e, feelings, prompt: typeof e.prompt === "string" ? e.prompt : null };
+}
+/** Entschlüsselt eine Sicherung und gibt die geprüften Einträge zurück. Wirft "bad-file" oder "bad-pass". Ändert nichts. */
+export async function readBackup(text, pass) {
   let f;
   try { f = JSON.parse(text); } catch (_) { throw new Error("bad-file"); }
   if (!f || f.app !== "gefuehlsjournal" || f.format !== 1) throw new Error("bad-file");
@@ -160,11 +176,20 @@ export async function importBackup(text, pass) {
     const key = await passKey(pass, unb64(f.salt));
     payload = await open_({ iv: unb64(f.iv), ct: unb64(f.data) }, key);
   } catch (_) { throw new Error("bad-pass"); }
+  const seen = new Set();
+  return (payload.entries || []).map(clean).filter((e) => e && !seen.has(e.id) && seen.add(e.id));
+}
+/** Spielt Einträge ein. replace=true ersetzt alles in einer Transaktion (alles oder nichts). Gibt die Zahl eingespielter Einträge zurück. */
+export async function restoreEntries(list, replace) {
   const existing = new Set((await allEntries()).map((e) => e.id));
-  let added = 0;
-  for (const e of payload.entries || []) {
-    if (!e || !e.id || existing.has(e.id)) continue;
-    await putEntry(e); added++;
-  }
-  return added;
+  const todo = replace ? list : list.filter((e) => !existing.has(e.id));
+  const recs = [];
+  for (const e of todo) recs.push({ id: e.id, ...(await seal(e)) });
+  await new Promise((res, rej) => {
+    const t = db.transaction("entries", "readwrite"), st = t.objectStore("entries");
+    if (replace) st.clear();
+    recs.forEach((r) => st.put(r));
+    t.oncomplete = () => res(); t.onerror = t.onabort = () => rej(t.error);
+  });
+  return recs.length;
 }

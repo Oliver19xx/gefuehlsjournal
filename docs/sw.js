@@ -1,6 +1,6 @@
 // Service Worker: liefert die App offline aus. Er speichert nur Dateien der App selbst, niemals Einträge.
 // CACHE_VERSION muss mit js/version.js übereinstimmen; jede Änderung löst ein Update aus.
-const CACHE_VERSION = "0.1.0";
+const CACHE_VERSION = "0.1.1";
 const CACHE = "gefuehlsjournal-" + CACHE_VERSION;
 const ASSETS = [
   "./", "index.html", "manifest.webmanifest",

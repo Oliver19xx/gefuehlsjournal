@@ -16,10 +16,16 @@
   --vvh: 100dvh;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* Native-Gefühl (US-7.1): kein Doppeltipp-Zoom, Zwei-Finger-Zoom bleibt erlaubt */
+html { touch-action: manipulation; }
 html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-ui); font-size: 100%; }
 body { overscroll-behavior: none; -webkit-text-size-adjust: 100%; }
 button, input, textarea { font: inherit; color: inherit; }
-button { cursor: pointer; }
+button { cursor: pointer; touch-action: manipulation; }
+/* Kein Kontextmenü und kein Markieren bei langem Drücken; Schreibfläche und Felder bleiben markierbar */
+button, a.btn, .nav, .keypad, .pins, .chips, .wheel, .tag { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, select { font-size: max(16px, 1rem); }
+textarea, input, .readtext { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
 :focus-visible { outline: 3px solid #5d6f86; outline-offset: 2px; border-radius: 8px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -78,6 +84,8 @@ h2 { font-size: 1.125rem; font-weight: 800; margin: 0 0 8px; }
 .wheel .seg { cursor: pointer; outline: none; }
 .wheel .seg:focus-visible path { stroke: #3B3A45; stroke-width: 3; }
 .wheel text { pointer-events: none; font-family: var(--font-ui); }
+.wheelhold { display: flex; flex-direction: column; align-items: center; }
+.wheelhold .corelist { align-self: stretch; }
 .aslist { border: 0; background: none; color: #5d6f86; font-weight: 800; font-size: .8125rem; min-height: var(--tap-min); padding: 0 12px; align-self: center; }
 .corelist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0 14px; }
 .corelist button { min-height: 56px; border-radius: 16px; border: 0; font-weight: 800; font-size: 1rem; }
@@ -152,7 +160,10 @@ textarea.write::placeholder { color: var(--text-3); font-style: italic; }
 
 /* Hilfe */
 .heart { width: 110px; height: 110px; border-radius: 50%; background: #f6e0e0; display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; }
-.nums { font-size: .8125rem; color: var(--text-2); font-weight: 700; margin: 10px 0 16px; text-align: center; }
+.callbtns { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+.callbtns .btn + .btn { margin-top: 0; }
+.btn small { display: block; font-weight: 700; font-size: .8rem; opacity: .85; }
+.nums { font-size: .8125rem; color: var(--text-2); font-weight: 700; margin: 6px 0 4px; text-align: center; }
 
 /* Einstellungen */
 .sh { font-size: .72rem; letter-spacing: .6px; text-transform: uppercase; color: var(--text-3); font-weight: 800; margin: 16px 0 8px; }
@@ -165,7 +176,7 @@ textarea.write::placeholder { color: var(--text-3); font-style: italic; }
 .prose p, .prose li { color: var(--text-2); line-height: 1.55; font-size: .92rem; } .prose h2 { margin-top: 18px; }
 
 /* Toast, Overlay */
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(84px + var(--safe-b)); background: var(--text); color: #fff; padding: 12px 18px; border-radius: 16px;
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(96px + var(--safe-b)); background: var(--text); color: #fff; padding: 12px 18px; border-radius: 16px;
   font-weight: 700; font-size: .875rem; z-index: 50; max-width: 90vw; box-shadow: 0 8px 24px rgba(0,0,0,.18); display: flex; gap: 12px; align-items: center; }
 .toast button { border: 0; background: #fff; color: var(--text); border-radius: 10px; padding: 6px 12px; font-weight: 800; min-height: 36px; }
 #cover { position: fixed; inset: 0; background: var(--bg); z-index: 100; display: none; align-items: center; justify-content: center; }
@@ -173,3 +184,14 @@ body.covered #cover { display: flex; }
 .steps { text-align: left; margin: 6px 0 16px; padding-left: 20px; color: var(--text-2); line-height: 1.6; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 h1:focus { outline: none; }
+/* 0.1.1 */
+.warn.check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.warn.check input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: var(--text); }
+.draftrow { display: flex; gap: 8px; align-items: stretch; margin: 4px 0 8px; }
+.draftrow .draftcard { margin: 0; flex: 1; }
+.draftdel { border: 1px solid var(--border); background: var(--surface); border-radius: 16px; padding: 0 12px; font-weight: 700; font-size: .84rem; color: var(--text-2); min-height: var(--tap-min); }
+.menu.left { left: 18px; right: auto; }
+.menu .menuhead { margin: 0; padding: 14px 16px 6px; font-weight: 800; font-size: .9rem; }
+.menu button.danger { color: #a24f4f; }
+.empty .btn { margin-top: 12px; }
+.empty p { margin: 0; }

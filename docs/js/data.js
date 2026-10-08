@@ -3,12 +3,12 @@
 export const CORES = [
   { id: "freude", name: "Freude", color: "#F2C35B", c2: "#f7da99", c3: "#fbeccb", ink: "#8a6413",
     l2: {
-      "glücklich": ["froh", "heiter", "ausgelassen"],
+      "glücklich": ["froh", "heiter", "leicht"],
       "dankbar": ["beschenkt", "erfüllt"],
       "neugierig": ["interessiert", "fasziniert"],
       "begeistert": ["inspiriert", "voller Energie"],
       "hoffnungsvoll": ["optimistisch", "zuversichtlich"],
-      "verspielt": ["albern", "übermütig"],
+      "verspielt": ["ausgelassen", "unbeschwert"],
     } },
   { id: "staerke", name: "Stärke", color: "#F0A487", c2: "#f6c7b5", c3: "#fae2d9", ink: "#8c4a2f",
     l2: {
@@ -51,8 +51,8 @@ export const CORES = [
       "frustriert": ["genervt", "ungeduldig"],
       "gereizt": ["dünnhäutig", "aufgebracht"],
       "wütend": ["zornig", "rasend"],
-      "neidisch": ["eifersüchtig", "missgünstig"],
-      "bitter": ["verbittert", "nachtragend"],
+      "neidisch": ["eifersüchtig", "zu kurz gekommen"],
+      "bitter": ["verbittert", "enttäuscht vom Leben"],
       "empört": ["entrüstet", "ungerecht behandelt"],
     } },
 ];
@@ -89,7 +89,7 @@ export const PROMPTS = {
   trauer: [
     "Was hast du dir anders gewünscht?",
     "Was fehlt dir gerade?",
-    "Was würdest du einem guten Freund sagen, dem es so geht wie dir?",
+    "Was würdest du einem lieben Menschen sagen, dem es so geht wie dir?",
     "Wann hat dieses Gefühl angefangen?",
     "Was würde dir jetzt ein kleines bisschen guttun?",
     "Was möchtest du loswerden, ohne dass jemand antworten muss?",
@@ -99,13 +99,13 @@ export const PROMPTS = {
     "Was liegt in deiner Hand, und was nicht?",
     "Was wäre ein kleiner nächster Schritt?",
     "Wer oder was könnte dir gerade Halt geben?",
-    "Was sagt die Sorge, und was weißt du sicher?",
+    "Was sagt die Sorge, und was weißt du davon sicher?",
     "Wie würde sich ein bisschen mehr Sicherheit anfühlen?",
   ],
   wut: [
     "Was hat dich heute aufgebracht?",
     "Welche Grenze wurde überschritten?",
-    "Was hättest du gern gesagt, wenn du dich getraut hättest?",
+    "Was hättest du gern gesagt?",
     "Was ist dir an dieser Sache wichtig?",
     "Wo spürst du die Wut im Körper?",
     "Was brauchst du gerade, damit es ein bisschen leichter wird?",
