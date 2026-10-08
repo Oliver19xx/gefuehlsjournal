@@ -34,7 +34,7 @@ Erwachsene, die gern reflektieren würden, aber vor der leeren Seite hängen ble
 | E6 | Biometrie | Nicht in v1, weil Face ID und Fingerabdruck im Browser nicht verlässlich nutzbar sind. Nur PIN. |
 | E7 | Rückblick-Zeiträume (W1) | Rollierend: heute plus die 6 bzw. 29 Tage davor, nach lokaler Gerätezeit. |
 | E8 | Hinweise im Rückblick (W2) | Nur aus gewählten Gefühlen und Datum berechnet, nie aus dem Text. |
-| E9 | Datum eines Eintrags, Einträge für vergangene Tage | Datum und Uhrzeit eines Eintrags sind der Beginn des Schreibens (lokale Zeit), auch wenn erst nach Mitternacht gespeichert wird. "Bearbeitet" erscheint nur, wenn ein gespeicherter Eintrag später erneut geöffnet und geändert wird, nie in der ersten Schreibsitzung. Einträge für vergangene Tage gibt es in v1 nicht. |
+| E9 | Datum eines Eintrags, Einträge für vergangene Tage | Datum und Uhrzeit eines Eintrags sind der Beginn des Schreibens (lokale Zeit), auch wenn erst nach Mitternacht gespeichert wird. "Bearbeitet" erscheint nur, wenn ein gespeicherter Eintrag später erneut geöffnet und geändert wird, nie in der ersten Schreibsitzung. Wird ein Entwurf erst an einem späteren Tag gespeichert, zeigen Liste und Leseansicht "begonnen am <Datum>". Einträge für vergangene Tage gibt es in v1 nicht. |
 | E10 | Land der Krisennummern | v1 nur Deutschland; der Screen sagt das ausdrücklich. |
 
 ## Nicht in v1
