@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 – 8. Oktober 2026
+
+Gehört inhaltlich zu 0.1.1 (Phase 1). Eigene Versionsnummer, damit schon geladene Geräte das Update sicher bekommen.
+
+- US-1.6: Im Browser erscheint der Hinweis „Zum Home-Bildschirm hinzufügen“ direkt nach dem ersten Screen, vor der PIN-Einrichtung (auch vor „Ich habe eine Sicherungsdatei“). „Später“ ist möglich; dann erscheint er beim nächsten Öffnen im Browser wieder. In der installierten App erscheint er nie. Über die Einstellungen bleibt er aufrufbar.
+
 ## 0.1.1 – 8. Oktober 2026
 
 Phase 1 aus dem Releaseplan 1.0: Fehler aus dem Testbericht v0.1.0, Punkte aus UX- und Design-Review, Backlog MVP v0.2.

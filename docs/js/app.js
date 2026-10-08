@@ -91,8 +91,10 @@ async function boot() {
   }
   state.lock = await vault.lockInfo();
   if (!state.lock) return show(onboarding);
-  if (state.lock.mode === "none") { await vault.unlockWithoutPin(); await afterUnlock(); return; }
-  show(unlock);
+  const go = async () => { if (state.lock.mode === "none") { await vault.unlockWithoutPin(); await afterUnlock(); } else show(unlock); };
+  // US-1.6: Im Browser erscheint der Hinweis bei jedem Öffnen, in der installierten App nie.
+  if (!isStandalone()) return show(installHint, go);
+  await go();
 }
 async function afterUnlock() {
   state.entries = await vault.allEntries();
@@ -100,6 +102,8 @@ async function afterUnlock() {
 }
 
 // 1. Erster Start
+// US-1.6: Im Browser kommt der Home-Bildschirm-Hinweis vor der PIN, damit nichts im getrennten Browser-Speicher landet.
+const beforeSetup = (next) => isStandalone() ? next() : show(installHint, next);
 function onboarding() {
   return screen("", h("div", { class: "col center grow" },
     h("div", { class: "illu" }, h("img", { src: "icons/icon.svg", alt: "" })),
@@ -107,10 +111,10 @@ function onboarding() {
     h("p", { class: "p" }, "Alles, was du schreibst, bleibt nur auf deinem Gerät.", h("br"), "Kein Konto, keine Cloud, kein Server."),
     h("div", { class: "badge" }, h("span", { "aria-hidden": "true" }, "✦"), "Komplett gebaut von einem Grok-Bot-Team, ohne menschliche Hand.")),
     h("div", { class: "grow" }),
-    h("button", { class: "btn", onclick: () => show(pinSetup, { first: true }) }, "Los geht's"),
-    h("button", { class: "link", onclick: async () => {
+    h("button", { class: "btn", onclick: () => beforeSetup(() => show(pinSetup, { first: true })) }, "Los geht's"),
+    h("button", { class: "link", onclick: () => beforeSetup(async () => {
       await vault.setupWithoutPin(); state.lock = await vault.lockInfo(); state.entries = []; show(backupImport, { fresh: true });
-    } }, "Ich habe eine Sicherungsdatei"),
+    }) }, "Ich habe eine Sicherungsdatei"),
     h("button", { class: "link", onclick: () => show(privacy, () => show(onboarding)) }, "Mehr zum Datenschutz"),
     h("div", { class: "ver" }, `Gefühls-Journal · Version ${VERSION}`));
 }
@@ -150,7 +154,7 @@ function pinSetup(opts) {
       h("span", null, h("b", null, "⚠ Wichtig"), "Wenn du deine PIN vergisst, können deine Einträge nicht wiederhergestellt werden. Ich habe das verstanden.")));
     if (!confirming) kids.push(h("button", { class: "btn", disabled: pin.length < 4 || !understood, onclick: () => { first = pin; pin = ""; draw(); } }, "Weiter"));
     if (opts.first && !confirming) kids.push(h("button", { class: "link", onclick: async () => {
-      await vault.setupWithoutPin(); state.lock = await vault.lockInfo(); state.entries = await vault.allEntries(); show(installHint, true);
+      await vault.setupWithoutPin(); state.lock = await vault.lockInfo(); state.entries = await vault.allEntries(); show(today);
     } }, "Später einrichten"));
     if (confirming) kids.push(h("button", { class: "link", onclick: () => { first = null; pin = ""; draw(); } }, "Andere PIN wählen"));
     root.replaceChildren(...kids.filter(Boolean));
@@ -161,7 +165,7 @@ function pinSetup(opts) {
     await vault.setPin(pin);
     state.lock = await vault.lockInfo();
     resetTries();
-    if (opts.first) { state.entries = await vault.allEntries(); show(installHint, true); }
+    if (opts.first) { state.entries = await vault.allEntries(); show(today); }
     else { show(settings); toast("Deine neue PIN ist gespeichert."); }
   };
   draw();
@@ -256,8 +260,10 @@ function deleteAll(onBack) {
 }
 
 // Hinweis: Zum Home-Bildschirm hinzufügen
-function installHint(afterOnboarding) {
-  const next = () => afterOnboarding ? show(today) : show(settings);
+// onNext gesetzt: Hinweis im Ablauf (vor der PIN bzw. beim Öffnen im Browser); sonst aus den Einstellungen.
+function installHint(onNext) {
+  const afterOnboarding = typeof onNext === "function";
+  const next = () => afterOnboarding ? onNext() : show(settings);
   if (afterOnboarding && isStandalone()) { queueMicrotask(next); return screen(""); }
   const kids = [];
   if (!afterOnboarding) kids.push(back("Einstellungen", next));
