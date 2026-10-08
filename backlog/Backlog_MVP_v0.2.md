@@ -40,6 +40,8 @@ Erwachsene, die gern reflektieren würden, aber vor der leeren Seite hängen ble
 ## Nicht in v1
 Konten und Cloud-Sync, Biometrie, Erinnerungen und Push, PDF-Export, Fotos und Sprachnotizen, Streaks, Teilen, Einträge für vergangene Tage, Krisennummern für andere Länder.
 
+Für nach 1.0 vorgemerkt: Hinweis "Tippen" in der Mitte des Rads wieder einblenden (Design-Nachprüfung 0.1.2).
+
 Spalte "App": Stand laut Dev in v0.1.0, korrigiert nach dem [Testbericht](../review/Testbericht_App_v0.1.0.md) (T7). ✔ umgesetzt, ◐ bekannte Lücke aus den Reviews, ○ offen. Wo v0.2 Kriterien präzisiert (z. B. genaue Wartezeiten), muss der Tester gegen die neuen Kriterien abnehmen.
 
 ---
@@ -124,6 +126,7 @@ Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit mei
 - "Fertig" ist bei leerem Text deaktiviert.
 - Schließen (X) mit Text fragt "Entwurf behalten" oder "Verwerfen".
 - Nach dem Speichern erscheint auf beiden Wegen für 3 Sekunden der Text `SAVE_THANKS` aus `docs/js/data.js`.
+- Danach zeigt die App "Einträge" mit dem neuen Eintrag, damit sichtbar ist, dass er gespeichert wurde (Entscheidung zu UX6).
 - Gespeichert werden Text, Gefühle (falls gewählt), Impuls (falls gezeigt) und als Erstell-Zeitpunkt der Beginn des Schreibens (E9).
 
 **US-3.4 Gefühl nachtragen** · Must · App ✔

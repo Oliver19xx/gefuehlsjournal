@@ -62,7 +62,10 @@ Ergebnis: kurze Rückmeldung im Team-Chat, gern mit Screenshot bei Problemen.
 - Tester macht einen kurzen Abschlusstest auf der Live-Seite.
 - Product Owner setzt alle Stories auf ✔, schließt das Backlog ab und meldet Oliver die Fertigstellung.
 
-## Zeitrahmen (Schätzung)
+## Stand 08.10., 20:45 Uhr
+Phase 1 ist mit 0.1.1 und 0.1.2 erledigt; UX- und Design-Punkte sind laut Nachprüfung umgesetzt, offen bleibt nur UX2 (Tastatur, Gerätetest). Als Nächstes: Regressionstest durch den Tester, danach Gerätetest durch Oliver. 1.0.0 verschiebt sich damit voraussichtlich auf Freitag, 09.10.
+
+## Zeitrahmen (ursprüngliche Schätzung)
 | Phase | Ziel |
 |---|---|
 | 1 · Release 0.1.1 | heute (08.10.) bis etwa 11 Uhr |
