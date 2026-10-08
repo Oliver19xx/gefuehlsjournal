@@ -77,7 +77,8 @@ Als Nutzerin, die ihre PIN vergessen hat, möchte ich verstehen, was ich tun kan
 
 **US-1.6 Hinweis "Zum Home-Bildschirm hinzufügen"** · Must · App ✔ · neu
 Als Nutzerin möchte ich wissen, dass ich die App installieren sollte, damit meine Daten nicht vom Browser gelöscht werden.
-- Erscheint einmal direkt nach dem Onboarding, wenn die App nicht installiert läuft.
+- Erscheint im Browser direkt nach dem ersten Screen, noch vor der PIN-Einrichtung, damit niemand die ersten Einträge in den getrennten Browser-Speicher schreibt (installierte Web-Apps haben auf dem iPhone eigenen Speicher).
+- "Später" ist möglich; dann geht es normal weiter, und der Hinweis erscheint beim nächsten Öffnen im Browser erneut.
 - Erklärt in einem Satz, warum (Safari kann Daten nicht installierter Seiten nach einer Weile löschen), und zeigt die Schritte für iPhone bzw. Android.
 - Läuft die App installiert, erscheint der Hinweis nie.
 - Ist in den Einstellungen erneut aufrufbar.
