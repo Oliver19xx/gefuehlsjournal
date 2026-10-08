@@ -35,12 +35,12 @@ Fertig, wenn veröffentlicht, Changelog ergänzt und Dev im Team-Chat meldet, we
 ### Phase 3 · Gerätetest · Oliver (etwa 20 Minuten, mit Android etwa 25)
 Das Team hat keine echten Geräte. Der Gerätetest ist der einzige Schritt, bei dem ein Mensch die App bedient; gebaut und geändert wird weiterhin nur vom Team. Checkliste (Tester ergänzt sie bei Bedarf):
 **A · iPhone, Safari im Browser (ca. 5 Minuten)**
-1. Seite in Safari öffnen, "Los geht's", PIN mit 6 Ziffern einrichten. Die Seite lädt dabei nicht neu.
+1. Seite in Safari öffnen, "Los geht's": Direkt danach, noch vor der PIN, erscheint der Hinweis "Zum Home-Bildschirm hinzufügen" (US-1.6). Für diesen Test "Später" tippen und eine PIN mit 6 Ziffern einrichten. Die Seite lädt dabei nicht neu.
 2. Bei der PIN schnell mehrmals dieselbe Ziffer tippen: Es wird nicht gezoomt, nichts wird markiert, kein Menü erscheint. Einen Button lange drücken: kein Kontextmenü.
 3. Einen kurzen Eintrag direkt schreiben und speichern.
 
 **B · iPhone, installiert (ca. 12 Minuten)**
-4. Zum Home-Bildschirm hinzufügen, von dort öffnen: Vollbild ohne Browserleiste, App-Icon passt. Bitte melden: Fragt die installierte App nach der PIN aus Schritt 1 und zeigt den Eintrag aus Schritt 3, oder beginnt sie neu mit "Los geht's"? (Auf dem iPhone haben installierte Web-Apps in der Regel einen eigenen Speicher, getrennt von Safari. Dann müsste der Hinweis zum Installieren davor warnen, vorher in Safari zu schreiben.)
+4. Zum Home-Bildschirm hinzufügen, von dort öffnen: Vollbild ohne Browserleiste, App-Icon passt. Bitte melden: Fragt die installierte App nach der PIN aus Schritt 1 und zeigt den Eintrag aus Schritt 3, oder beginnt sie neu mit "Los geht's"? (Auf dem iPhone haben installierte Web-Apps in der Regel einen eigenen Speicher, getrennt von Safari. Außerdem prüfen: In der installierten App erscheint der Hinweis zum Installieren nicht mehr.)
 5. Einen Eintrag über das Rad mit zwei Gefühlen aus verschiedenen Grundgefühlen schreiben. Beim Schreiben verdeckt die Tastatur weder Text noch "Fertig". In der Schreibfläche lässt sich Text weiterhin lange drücken, markieren und kopieren.
 6. Einen Eintrag direkt schreiben und ein Gefühl nachtragen.
 7. Mit zwei Fingern in einen Screen hineinzoomen: Das muss weiterhin gehen (Barrierefreiheit).
